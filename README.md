@@ -5,7 +5,8 @@ This repository holds three programs.
 Do not enter carelessly.
 The programs are of adventure, wagering and of what connects them.
 
-![image](https://github.com/hamzulak/all-seeing-repository/assets/148567107/fce5f920-3710-443c-9772-beee03022194)
+![image](https://github.com/hamzulak/all-seeing-repository/assets/148567107/6666aa43-c3e9-4a8e-a9ba-138ba7f8de26)
+
 
 They hold the titles:
  - Dices&Programs 

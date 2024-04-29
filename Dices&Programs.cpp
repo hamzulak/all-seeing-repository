@@ -14,7 +14,7 @@ int main() {
 
     int choice;
 
-    cout << "Welcome to the Dice Rolling Program!" << endl;
+    cout << "Welcome to the Dices & Programs!" << endl;
 
     while (true) {
         cout << "\nChoose a dice to throw (from 2 to 20 sides), or enter 0 to exit: ";

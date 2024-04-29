@@ -5,7 +5,8 @@ This repository holds three programs.
 Do not enter carelessly.
 The programs are of adventure, wagering and of what connects them.
 
-![image](https://github.com/hamzulak/all-seeing-repository/assets/148567107/6666aa43-c3e9-4a8e-a9ba-138ba7f8de26)
+![image](https://github.com/hamzulak/all-seeing-repository/assets/148567107/580410c4-1dff-4b86-a9b0-b706dae1b913)
+
 
 
 They hold the titles:
@@ -61,3 +62,7 @@ Combat involves turn-based actions where players and enemies take turns dealing 
 Upon defeating an enemy, players gain experience points. When enough experience points are accumulated, players level up, increasing their maximum health and damage. Additionally, defeated enemies become stronger, ensuring that the game remains challenging as the player progresses.
 
 The game continues until the player's health reaches zero, at which point the game ends, and the player is informed of their defeat.
+
+
+![image](https://github.com/hamzulak/all-seeing-repository/assets/148567107/ff8bb64e-af85-46a2-8292-9cbbd62c1430)
+

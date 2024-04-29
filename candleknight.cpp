@@ -97,7 +97,6 @@ void playerTurn(int turnChoice, int &enemyMaxHealth, int enemyDamage, string ene
             cout << "You have no more health potions!" << endl;
         }
     } else {
-        playerHealth = 1;
         cout << "Invalid choice!" << endl;
     }
 }

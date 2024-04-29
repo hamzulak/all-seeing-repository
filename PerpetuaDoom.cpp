@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <string>
 
 using namespace std;
 
@@ -11,9 +10,10 @@ int playerMaxHealth = 18;
 int playerDamage = 1;
 int exp = 0;
 int potions = 3;
+int lvl = 1; // Player level
 
 // Function to initialize enemy stats
-void initializeEnemy(string &enemyName, int &enemyMaxHealth, int &enemyDamage) {
+void initializeEnemy(string &enemyName, int &enemyMaxHealth, int &enemyDamage, int playerLevel) {
     // Generate a random number from 0 to 5
     int enemyType = rand() % 6;
 
@@ -21,28 +21,28 @@ void initializeEnemy(string &enemyName, int &enemyMaxHealth, int &enemyDamage) {
     if (enemyType == 0) {
         // GOBLIN - Balanced enemy
         enemyName = "Goblin";
-        enemyMaxHealth = 4;
-        enemyDamage = 1;
+        enemyMaxHealth = 4 + rand() % (playerLevel * 3) + 1; // Increased health with player level
+        enemyDamage = 1 + rand() % (playerLevel * 2) + 1; // Increased damage with player level
     } else if (enemyType == 1) {
         // SKELETON - High DMG, low health
         enemyName = "Skeleton";
-        enemyMaxHealth = 2;
-        enemyDamage = 4;
+        enemyMaxHealth = 2 + rand() % (playerLevel * 2) + 1; // Increased health with player level
+        enemyDamage = 4 + rand() % (playerLevel * 2) + 1; // Increased damage with player level
     } else if (enemyType == 2) {
         // SLIME - High health, no DMG at start before leveling up
         enemyName = "Slime";
-        enemyMaxHealth = 10;
+        enemyMaxHealth = 10 + rand() % (playerLevel * 4) + 1; // Increased health with player level
         enemyDamage = 0;
     } else if (enemyType == 3) {
         // Bandit - Moderate health, moderate DMG
         enemyName = "Bandit";
-        enemyMaxHealth = 6;
-        enemyDamage = 2;
+        enemyMaxHealth = 6 + rand() % (playerLevel * 3) + 1; // Increased health with player level
+        enemyDamage = 2 + rand() % (playerLevel * 3) + 1; // Increased damage with player level
     } else if (enemyType == 4) {
         // Orc - High health, high DMG
         enemyName = "Orc";
-        enemyMaxHealth = 11;
-        enemyDamage = 3;
+        enemyMaxHealth = 11 + rand() % (playerLevel * 5) + 1; // Increased health with player level
+        enemyDamage = 3 + rand() % (playerLevel * 4) + 1; // Increased damage with player level
     } else if (enemyType == 5) {
         // Bag of Loot - Special enemy, gives potions
         enemyName = "Living bag of Loot";
@@ -61,9 +61,8 @@ void printEnemyEncounter(string enemyName, int enemyMaxHealth, int enemyDamage) 
         cout << "You got another Health potion!" << endl;
     }
     // Print enemy health and damage
-    cout << "Enemy HP: " << enemyMaxHealth << " Enemy DMG: " << enemyDamage << endl;
+    cout << "Enemy HP: " << enemyMaxHealth << " | Enemy DMG: " << enemyDamage << endl;
 }
-
 
 void playerTurn(int turnChoice, int &enemyMaxHealth, int enemyDamage, string enemyName) {
     if (turnChoice == 1) {
@@ -101,7 +100,6 @@ void playerTurn(int turnChoice, int &enemyMaxHealth, int enemyDamage, string ene
     }
 }
 
-
 void printEnemyStatus(int enemyMaxHealth, int enemyDamage) {
     cout << "Enemy HP: " << enemyMaxHealth << " | Enemy DMG: " << enemyDamage << endl;
 }
@@ -111,36 +109,16 @@ void levelUp(string &enemyName, int &enemyMaxHealth, int &enemyDamage) {
     cout << "You defeated the " << enemyName << "!" << endl << endl;
     // If player has enough experience, level up
     if (exp >= 2) {
+        lvl++; // Increase player level
         exp -= 2;
         // leveling up increases player's max health and damage
-        playerMaxHealth += rand() % 5 + 3;
+        int healthIncrease = rand() % 5 + 3; // Increased health by 3 to 7 points per level
+        int damageIncrease = rand() % 2 + 1; // Increased damage by 1 to 3 points per level
+        playerMaxHealth += healthIncrease;
         playerHealth = playerMaxHealth; // Fully heal player on level up
-        playerDamage += rand() % 2 + 1;
+        playerDamage += damageIncrease;
 
         cout << "Level Up! Max Health has been increased to " << playerMaxHealth << " & your DMG to " << playerDamage << endl;
-
-    }
-
-    // Increase enemy's stats based on enemy type
-    if (enemyName == "Goblin") {
-        enemyMaxHealth += rand() % 4 + 3; // Increased health by 3 to 6 points
-        enemyDamage += rand() % 2 + 2; // Increased damage by 2 to 3 points
-    } else if (enemyName == "Skeleton") {
-        enemyMaxHealth += rand() % 2 + 2; // Increased health by 2 to 3 points
-        enemyDamage += rand() % 1 + 1; // Increased damage by 1 to 2 points
-    } else if (enemyName == "Slime") {
-        enemyMaxHealth += rand() % 3 + 2; // Increased health by 2 to 4 points
-        enemyDamage += 1; // Increased damage by 1 to 2 points
-    } else if (enemyName == "Bandit") {
-        enemyMaxHealth += rand() % 3 + 2; // Increased health by 2 to 4 points
-        enemyDamage += rand() % 2 + 1; // Increased damage by 1 to 3 points
-    } else if (enemyName == "Orc") {
-        enemyMaxHealth += rand() % 4 + 3; // Increased health by 3 to 6 points
-        enemyDamage += rand() % 3 + 2; // Increased damage by 2 to 4 points
-    } else {
-        // Bag of Loot doesn't get stronger.
-        enemyMaxHealth += 1;
-        enemyDamage = 0;
     }
 }
 
@@ -160,7 +138,6 @@ int main() {
     cout << "Prepare for an eternal journey!" << endl;
     cout << "Defeat fearsome enemies, level up and become perpetually powerful." << endl << endl;
 
-
     srand(time(0));
 
     int turnChoice;
@@ -168,10 +145,9 @@ int main() {
     int enemyMaxHealth, enemyDamage;
     string enemyName;
 
-
     while (playerHealth > 0) {
 
-        initializeEnemy(enemyName, enemyMaxHealth, enemyDamage);
+        initializeEnemy(enemyName, enemyMaxHealth, enemyDamage, lvl);
 
         printEnemyEncounter(enemyName, enemyMaxHealth, enemyDamage);
 

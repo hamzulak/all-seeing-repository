@@ -62,6 +62,13 @@ Combat involves turn-based actions where players and enemies take turns dealing 
 
 Upon defeating an enemy, players gain experience points. When enough experience points are accumulated, players level up, increasing their maximum health and damage. Additionally, defeated enemies become stronger, ensuring that the game remains challenging as the player progresses.
 
+The enemies you can encounter are: 
+- Goblin
+- Skeleton
+- Slime
+- Orc
+- Living bag of loot
+
 The game continues until the player's health reaches zero, at which point the game ends, and the player is informed of their defeat.
 
 

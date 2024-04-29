@@ -158,7 +158,7 @@ int main() {
     cout << "***      Welcome to PerpetuaDoom!       ***" << endl;
     cout << "*******************************************" << endl;
     cout << "Prepare for an eternal journey!" << endl;
-    cout << "Defeat fearsome enemies, level up, and become invincible" << endl;
+    cout << "Defeat fearsome enemies, level up and become perpetually powerful." << endl << endl;
 
 
     srand(time(0));

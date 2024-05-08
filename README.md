@@ -24,6 +24,7 @@ If we had to, by the complexity of the programs they would be ranked as such:
 1. [Dices&Programs](#dicesprograms)
 2. [Fools' Delight](#fools-delight)
 3. [PerpetuaDoom](#perpetuadoom)
+4. [How I made my github profile](#how-i-made-my-github-profile)
 
 | Program          | Chance  | Adventure |
 |----------------|---------|-----------|
